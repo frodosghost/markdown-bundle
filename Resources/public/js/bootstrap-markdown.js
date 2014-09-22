@@ -68,7 +68,7 @@
         }
       })
     }
-    
+
   , __buildButtons: function(buttonsArray, container) {
       var i,
           ns = this.$ns,
@@ -160,7 +160,7 @@
 
   , showEditor: function() {
       var instance = this,
-          textarea, 
+          textarea,
           ns = this.$ns,
           container = this.$element,
           editable = this.$editable,
@@ -394,7 +394,7 @@
           }) ||
 
           /* browser not supported */
-          function() { 
+          function() {
             return null
           }
 
@@ -411,11 +411,11 @@
           ('selectionStart' in e && function() {
               e.selectionStart = start
               e.selectionEnd = end
-              return 
+              return
           }) ||
 
           /* browser not supported */
-          function() { 
+          function() {
             return null
           }
 
@@ -460,7 +460,7 @@
         }
 
         return nextTab
-      } 
+      }
     }
 
   , setNextTab: function(start,end) {
@@ -601,15 +601,15 @@
 
       if (editor.hasClass('active') || this.$element.parent().length == 0) {
         editor.removeClass('active')
-        
+
         if (isHideable) {
-        
+
           // Check for editable elements
           if (editable.el != null) {
             // Build the original element
             var oldElement = $('<'+editable.type+'/>'),
                 content = this.getContent(),
-                currentContent = (typeof markdown == 'object') ? markdown.toHTML(content) : content 
+                currentContent = (typeof markdown == 'object') ? markdown.toHTML(content) : content
 
             $(editable.attrKeys).each(function(k,v) {
               oldElement.attr(editable.attrKeys[k],editable.attrValues[k])
@@ -621,7 +621,7 @@
             editor.replaceWith(oldElement)
           } else {
             editor.hide()
-            
+
           }
         }
 
@@ -663,7 +663,7 @@
         data: [{
           name: 'cmdBold',
           title: 'Bold',
-          icon: 'icon icon-bold',
+          icon: 'glyphicon glyphicon-bold',
           callback: function(e){
             // Give/remove ** surround the selection
             var chunk, cursor, selected = e.getSelection(), content = e.getContent()
@@ -676,7 +676,7 @@
             }
 
             // transform selection and set the cursor into chunked text
-            if (content.substr(selected.start-2,2) == '**' 
+            if (content.substr(selected.start-2,2) == '**'
                 && content.substr(selected.end,2) == '**' ) {
               e.setSelection(selected.start-2,selected.end+2)
               e.replaceSelection(chunk)
@@ -692,7 +692,7 @@
         },{
           name: 'cmdItalic',
           title: 'Italic',
-          icon: 'icon icon-italic',
+          icon: 'glyphicon glyphicon-italic',
           callback: function(e){
             // Give/remove * surround the selection
             var chunk, cursor, selected = e.getSelection(), content = e.getContent()
@@ -705,7 +705,7 @@
             }
 
             // transform selection and set the cursor into chunked text
-            if (content.substr(selected.start-1,1) == '*' 
+            if (content.substr(selected.start-1,1) == '*'
                 && content.substr(selected.end,1) == '*' ) {
               e.setSelection(selected.start-1,selected.end+1)
               e.replaceSelection(chunk)
@@ -721,7 +721,7 @@
         },{
           name: 'cmdHeading',
           title: 'Heading',
-          icon: 'icon icon-font',
+          icon: 'glyphicon glyphicon-font',
           callback: function(e){
             // Append/remove ### surround the selection
             var chunk, cursor, selected = e.getSelection(), content = e.getContent(), pointer, prevChar
@@ -734,7 +734,7 @@
             }
 
             // transform selection and set the cursor into chunked text
-            if ((pointer = 4, content.substr(selected.start-pointer,pointer) == '### ') 
+            if ((pointer = 4, content.substr(selected.start-pointer,pointer) == '### ')
                 || (pointer = 3, content.substr(selected.start-pointer,pointer) == '###')) {
               e.setSelection(selected.start-pointer,selected.end)
               e.replaceSelection(chunk)
@@ -757,7 +757,7 @@
         data: [{
           name: 'cmdUrl',
           title: 'URL/Link',
-          icon: 'icon icon-globe',
+          icon: 'glyphicon glyphicon-link',
           toggle: 'modal',
           callback: function(e){
             // Give [] surround the selection and prepend the link
@@ -784,7 +784,7 @@
         },{
           name: 'cmdImage',
           title: 'Image',
-          icon: 'icon icon-picture',
+          icon: 'glyphicon glyphicon-picture',
           callback: function(e){
             // Give ![] surround the selection and prepend the image link
             var chunk, cursor, selected = e.getSelection(), content = e.getContent();
@@ -816,7 +816,7 @@
         data: [{
           name: 'cmdList',
           title: 'List',
-          icon: 'icon icon-list',
+          icon: 'glyphicon glyphicon-list',
           callback: function(e){
             // Prepend/Give - surround the selection
             var chunk, cursor, selected = e.getSelection(), content = e.getContent()
@@ -825,7 +825,7 @@
             if (selected.length == 0) {
               // Give extra word
               chunk = 'list text here'
-                
+
               e.replaceSelection('- '+chunk)
 
               // Set the cursor
@@ -855,7 +855,7 @@
               }
             }
 
-           
+
 
             // Set the cursor
             e.setSelection(cursor,cursor+chunk.length)
@@ -871,7 +871,7 @@
             {
                 name:  'cmdBlockquote',
                 title: 'Block Quote',
-                icon:  'icon icon-user',
+                icon:  'glyphicon glyphicon-user',
                 callback: function(e) {
                     var chunk, cursor, selected = e.getSelection(), content = e.getContent();
 
@@ -890,7 +890,7 @@
           name: 'cmdPreview',
           title: 'Preview',
           btnText: 'Preview',
-          btnClass: 'btn btn-inverse',
+          btnClass: 'btn btn-warning',
           icon: 'icon icon-white icon-search',
           callback: function(e){
             // Check the preview mode and toggle based on this flag
@@ -950,7 +950,7 @@
               || $(el).parent().parent().parent().attr('class').indexOf('md-editor') < 0) {
           if ( typeof $(el).parent().parent().attr('class') == "undefined"
               || $(el).parent().parent().attr('class').indexOf('md-editor') < 0) {
-          
+
                 blurred = true
           }
         } else {
